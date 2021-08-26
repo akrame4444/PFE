@@ -6,6 +6,7 @@ public class mian {
 		// TODO Auto-generated method stub
 		LogReg frm = new LogReg(args);
 		frm.poompe(args);
+		/* l */
 	}
 
 }
