@@ -28,7 +28,7 @@ public class SQLManager {
 	
     public static String getext (String info) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbpfe", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/dbpfe", "root", "");
             Statement stmt = conn.createStatement();
             ResultSet rs;
             
