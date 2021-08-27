@@ -126,10 +126,9 @@ public class Home extends JFrame {
 		btnNewButton_2.setBounds(1063, 755, 130, 23);
 		contentPane.add(btnNewButton_2);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("D:\\peepeepoopoo\\PFE\\lock (4).png"));
-		lblNewLabel.setBounds(26, 65, 130, 128);
-		contentPane.add(lblNewLabel);
+		JTextField username = new JTextField("");
+		username.setBounds(26, 65, 130, 40);
+		contentPane.add(username);
 		
 		JButton btnNewButton_2_1 = new JButton("Log off");
 		btnNewButton_2_1.addActionListener(new ActionListener() {
@@ -185,5 +184,10 @@ public class Home extends JFrame {
 		
 		table = new JTable(model);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(26, 72, 46, 14);
+		contentPane.add(lblNewLabel_1);
+	username.setText(Owner);
 	}
 }
