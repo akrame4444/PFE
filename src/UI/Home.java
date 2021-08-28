@@ -1,8 +1,10 @@
 package UI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
-
+import java.awt.GraphicsConfiguration;
+import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +20,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.Dialog.ModalExclusionType;
 
 public class Home extends JFrame {
 
@@ -34,8 +37,9 @@ public class Home extends JFrame {
 				try {
 					Home frame = new Home(path, Owner);
 					frame.setVisible(true);
-				    frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-
+					frame.setSize(1200,600);
+					frame.setLocationRelativeTo(null);
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,10 +51,11 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home(String path , String Owner) {
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setAutoRequestFocus(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		System.out.println("home= "+ Owner);
-		setBounds(100, 100, 1359, 828);
+		setBounds(100, 100, 1138, 574);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,64 +72,13 @@ public class Home extends JFrame {
         DefaultTableModel model = new DefaultTableModel(data,col);
 		
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBounds(1203, 31, 130, 23);
+		btnNewButton.setBounds(961, -2, 130, 23);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
 		textField.setBounds(194, 32, 999, 23);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
-		JButton btnNewButton_1 = new JButton("Open file");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String info = data [table.getSelectedRow()][0];
-				String ext = SQLManager.getext(info);
-				System.out.println(ext);
-				switch (ext) {
-				case "txt": {
-					System.out.println("tada");
-					System.out.println("ext is = "+ext);
-					TextViewer frm = new TextViewer("test test");
-					frm.barad("test test");
-					System.out.println("is no text");
-					
-				}
-				default:
-					System.out.println("oh no ");
-					SQLManager.readPicture(info);
-					ImgViewer frm = new ImgViewer("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-					frm.Blyat("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-					System.out.println("is tetxt");
-				}
-				//if(ext == "txt") {
-					//System.out.println("oh no ");
-					//SQLManager.readPicture(info);
-					//ImgViewer frm = new ImgViewer("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-					//frm.Blyat("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-					//System.out.println("is tetxt");
-				//}
-				//else {
-					
-					//System.out.println("ext is = "+ext);
-					//TextViewer frm = new TextViewer("test test");
-					//frm.barad("test test");
-					//System.out.println("is no text");
-				//}
-			}
-		});
-		btnNewButton_1.setBounds(1203, 755, 130, 23);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Add file");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AddFile frm = new AddFile(Owner, false);
-				frm.sain(null, Owner, false);
-			}
-		});
-		btnNewButton_2.setBounds(1063, 755, 130, 23);
-		contentPane.add(btnNewButton_2);
 		
 		JTextField username = new JTextField("");
 		username.setBounds(26, 65, 130, 40);
@@ -139,7 +93,7 @@ public class Home extends JFrame {
 			}
 			
 		});
-		btnNewButton_2_1.setBounds(26, 721, 130, 23);
+		btnNewButton_2_1.setBounds(26, 369, 130, 23);
 		contentPane.add(btnNewButton_2_1);
 		
 		JButton btnNewButton_2_2 = new JButton("Show QR");
@@ -149,7 +103,7 @@ public class Home extends JFrame {
 				QRsaveFrame.qro(null, path);
 			}
 		});
-		btnNewButton_2_2.setBounds(26, 687, 130, 23);
+		btnNewButton_2_2.setBounds(26, 403, 130, 23);
 		contentPane.add(btnNewButton_2_2);
 		
 		JButton btnNewButton_2_3 = new JButton("Edit infos");
@@ -159,11 +113,11 @@ public class Home extends JFrame {
 				f.foo(null, true);
 			}
 		});
-		btnNewButton_2_3.setBounds(26, 653, 130, 23);
+		btnNewButton_2_3.setBounds(26, 433, 130, 23);
 		contentPane.add(btnNewButton_2_3);
 		
 		JButton btnNewButton_2_3_1 = new JButton("Edit attributs");
-		btnNewButton_2_3_1.setBounds(26, 619, 130, 23);
+		btnNewButton_2_3_1.setBounds(26, 467, 130, 23);
 		contentPane.add(btnNewButton_2_3_1);
 		
 		JButton btnNewButton_2_3_1_1 = new JButton("My files");
@@ -175,19 +129,60 @@ public class Home extends JFrame {
 				
 			}
 		});
-		btnNewButton_2_3_1_1.setBounds(26, 585, 130, 23);
+		btnNewButton_2_3_1_1.setBounds(26, 501, 130, 23);
 		contentPane.add(btnNewButton_2_3_1_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(194, 65, 1139, 679);
+		scrollPane.setBounds(194, 65, 1139, 459);
 		contentPane.add(scrollPane);
 		
 		table = new JTable(model);
 		scrollPane.setViewportView(table);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(26, 72, 46, 14);
-		contentPane.add(lblNewLabel_1);
 	username.setText(Owner);
+	
+	JButton btnNewButton_1 = new JButton("Open file");
+	btnNewButton_1.setBounds(26, 326, 130, 32);
+	contentPane.add(btnNewButton_1);
+	
+	JButton btnNewButton_2 = new JButton("Add file");
+	btnNewButton_2.setBounds(10, 292, 130, 23);
+	contentPane.add(btnNewButton_2);
+	btnNewButton_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			String info = data [table.getSelectedRow()][0];
+			String ext = SQLManager.getext(info);
+			System.out.println(ext);
+			switch (ext) {
+			case "txt": {
+				System.out.println("tada");
+				System.out.println("ext is = "+ext);
+				TextViewer frm = new TextViewer("test test");
+				frm.barad("test test");
+				System.out.println("is no text");
+				
+			}
+			default:
+				System.out.println("oh no ");
+				SQLManager.readPicture(info);
+				ImgViewer frm = new ImgViewer("D:\\peepeepoopoo\\PFE\\ppnyar.png");
+				frm.Blyat("D:\\peepeepoopoo\\PFE\\ppnyar.png");
+				System.out.println("is tetxt");
+			}
+			//if(ext == "txt") {
+				//System.out.println("oh no ");
+				//SQLManager.readPicture(info);
+				//ImgViewer frm = new ImgViewer("D:\\peepeepoopoo\\PFE\\ppnyar.png");
+				//frm.Blyat("D:\\peepeepoopoo\\PFE\\ppnyar.png");
+				//System.out.println("is tetxt");
+			//}
+			//else {
+				
+				//System.out.println("ext is = "+ext);
+				//TextViewer frm = new TextViewer("test test");
+				//frm.barad("test test");
+				//System.out.println("is no text");
+			//}
+		}
+	});
 	}
 }
