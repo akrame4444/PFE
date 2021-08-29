@@ -6,6 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.IOException;
+import java.nio.file.*;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +17,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Window.Type;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ImgViewer extends JFrame {
 
@@ -39,6 +44,16 @@ public class ImgViewer extends JFrame {
 	 * Create the frame.
 	 */
 	public ImgViewer(String path) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {try {
+				Files.deleteIfExists(Paths.get("C:\\Users\\AKRAME\\Desktop\\pfe\\temp"));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			}
+		});
 		setType(Type.POPUP);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 664, 723);

@@ -86,7 +86,7 @@ public class SQLManager {
             rs = pstmt.executeQuery();
             //dozan
             // write binary stream into file
-            File file = new File("ppnyar"+".png");
+            File file = new File("temp");
             fos = new FileOutputStream(file);
 
             System.out.println("Writing BLOB to file " + file.getAbsolutePath());
@@ -271,7 +271,7 @@ public class SQLManager {
 		      System.out.println("Record inserted .....");
 		   }
 	
-	public static void insertReg(String query, String QRPath, String Owner){
+	public static void insertReg(String query, String QRPath, String Email,String Owner){
 	    Connection conn = null;
 	    Statement stmt = null;
 	    try {
@@ -288,8 +288,8 @@ public class SQLManager {
 	    QRSave QRSaveFrame = new QRSave(QRPath);
 	    QRSaveFrame.qro(null, QRPath);
 	    
-	    Home homeFrame = new Home(QRPath,Owner);
-	    homeFrame.sain(null, QRPath, Owner);
+	    Home homeFrame = new Home(QRPath,Email,Owner);
+	    homeFrame.sain(null, QRPath,Email, Owner);
 	    
 	    
 	    } catch (SQLException excep) {

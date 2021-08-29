@@ -122,7 +122,7 @@ public class AttributFrame extends JFrame {
 				}
 				
 				String query = "INSERT INTO users " + "VALUES ('"+email+"', '"+fname+"', '"+lname+"', '"+pw+"', '"+QR+"')";
-				SQLManager.insertReg(query, QRPath, fname+lname);
+				SQLManager.insertReg(query, QRPath,email, fname+lname);
 				
 			}
 		});

@@ -170,8 +170,8 @@ public class Home extends JFrame {
 			default:
 				System.out.println("oh no ");
 				SQLManager.readPicture(info);
-				ImgViewer frm = new ImgViewer("C:\\Users\\AKRAME\\Desktop\\pfe\\ppnyar.png");
-				frm.Blyat("C:\\Users\\AKRAME\\Desktop\\pfe\\ppnyar.png");
+				ImgViewer frm = new ImgViewer("C:\\Users\\AKRAME\\Desktop\\pfe\\temp");
+				frm.Blyat("C:\\Users\\AKRAME\\Desktop\\pfe\\temp");
 			}
 			//if(ext == "txt") {
 				//System.out.println("oh no ");
