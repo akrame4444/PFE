@@ -84,8 +84,8 @@ public class LogReg extends JFrame {
 						System.out.println(info[1]);
 						System.out.println(info[2]);
 						System.out.println(info[3]);
-						Home HomeFrame = new Home(selectedFile.getAbsolutePath(), info[1]+info[2]);
-						HomeFrame.sain(args, selectedFile.getAbsolutePath(), info[1]+info[2]);
+						Home HomeFrame = new Home(selectedFile.getAbsolutePath(), info[0],info[1]+" "+info[2]);
+						HomeFrame.sain(args, selectedFile.getAbsolutePath(),info[0], info[1]+" "+info[2]);
 						dispose();
 						
 					}

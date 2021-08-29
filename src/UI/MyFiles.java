@@ -28,11 +28,11 @@ public class MyFiles extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void sain(String[] args, String path, String Owner) {
+	public static void sain(String[] args, String path,String Email, String Owner) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyFiles frame = new MyFiles(path, Owner);
+					MyFiles frame = new MyFiles(path,Email, Owner);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,8 +43,9 @@ public class MyFiles extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param Owner 
 	 */
-	public MyFiles(String path , String Owner) {
+	public MyFiles(String path , String Email, String Owner) {
 		
 		System.out.println("My Files = "+ Owner);
 		
@@ -94,7 +95,7 @@ public class MyFiles extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("D:\\peepeepoopoo\\PFE\\lock (4).png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\AKRAME\\Desktop\\pfe\\lock (4).png"));
 		lblNewLabel.setBounds(26, 65, 130, 128);
 		contentPane.add(lblNewLabel);
 		
@@ -113,8 +114,8 @@ public class MyFiles extends JFrame {
 		JButton btnNewButton_2_2 = new JButton("Return");
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Home frm = new Home(path , Owner);
-				frm.sain(null, path, Owner);
+				Home frm = new Home(path ,Email, Owner);
+				frm.sain(null, path,Email, Owner);
 				dispose();
 			}
 		});

@@ -30,12 +30,13 @@ public class Home extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param string 
 	 */
-	public static void sain(String[] args, String path, String Owner) {
+	public static void sain(String[] args, String path, String Email, String Owner) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Home frame = new Home(path, Owner);
+					Home frame = new Home(path,Email, Owner);
 					frame.setVisible(true);
 					frame.setSize(1200,600);
 					frame.setLocationRelativeTo(null);
@@ -49,8 +50,9 @@ public class Home extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param Email 
 	 */
-	public Home(String path , String Owner) {
+	public Home(String path , String Email, String Owner) {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setAutoRequestFocus(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -72,7 +74,11 @@ public class Home extends JFrame {
         DefaultTableModel model = new DefaultTableModel(data,col);
 		
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.setBounds(961, -2, 130, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(844, 11, 130, 23);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
@@ -123,8 +129,8 @@ public class Home extends JFrame {
 		JButton btnNewButton_2_3_1_1 = new JButton("My files");
 		btnNewButton_2_3_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyFiles frm = new MyFiles(path, Owner);
-				frm.sain(null, path, Owner);
+				MyFiles frm = new MyFiles(path,Email, Owner);
+				frm.sain(null, path,Email, Owner);
 				dispose();
 				
 			}
@@ -164,9 +170,8 @@ public class Home extends JFrame {
 			default:
 				System.out.println("oh no ");
 				SQLManager.readPicture(info);
-				ImgViewer frm = new ImgViewer("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-				frm.Blyat("D:\\peepeepoopoo\\PFE\\ppnyar.png");
-				System.out.println("is tetxt");
+				ImgViewer frm = new ImgViewer("C:\\Users\\AKRAME\\Desktop\\pfe\\ppnyar.png");
+				frm.Blyat("C:\\Users\\AKRAME\\Desktop\\pfe\\ppnyar.png");
 			}
 			//if(ext == "txt") {
 				//System.out.println("oh no ");
