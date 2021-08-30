@@ -23,6 +23,7 @@ import java.nio.file.*;
 
 import UI.Home;
 import UI.QRSave;
+import jdk.internal.access.JavaObjectInputStreamReadString;
  
 public class SQLManager {
 	
@@ -66,6 +67,9 @@ public class SQLManager {
 	
     public static void readPicture(String filename) {
         // update sql
+    	
+    	 String F = null;
+    	
         String selectSQL = "SELECT Content FROM files WHERE Filename=?";
         ResultSet rs = null;
         FileOutputStream fos = null;
@@ -88,15 +92,19 @@ public class SQLManager {
             // write binary stream into file
             File file = new File("temp");
             fos = new FileOutputStream(file);
-
+           
             System.out.println("Writing BLOB to file " + file.getAbsolutePath());
             while (rs.next()) {
                 InputStream input = rs.getBinaryStream("Content");
                 byte[] buffer = new byte[1024];
+                
                 while (input.read(buffer) > 0) {
-                    fos.write(buffer);
+                   
+                	fos.write(buffer);
+                    
                 }
-            }
+            }            System.out.println();
+
         } catch (SQLException | IOException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -112,13 +120,14 @@ public class SQLManager {
                     conn.close();
                 }
                 if (fos != null) {
-                    fos.close();
+                	
+                	fos.close();
                 }
 
             } catch (SQLException | IOException e) {
                 System.out.println(e.getMessage());
             }
-        }
+ }
     }
 	
 	   public static int countFilesuser(String user) throws Exception {

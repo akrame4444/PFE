@@ -171,6 +171,7 @@ public class Home extends JFrame {
 				System.out.println("oh no ");
 				SQLManager.readPicture(info);
 				ImgViewer frm = new ImgViewer("C:\\Users\\AKRAME\\Desktop\\pfe\\temp");
+				
 				frm.Blyat("C:\\Users\\AKRAME\\Desktop\\pfe\\temp");
 			}
 			//if(ext == "txt") {
