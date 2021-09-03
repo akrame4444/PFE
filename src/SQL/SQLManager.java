@@ -23,7 +23,7 @@ import java.nio.file.*;
 
 import UI.Home;
 import UI.QRSave;
-import jdk.internal.access.JavaObjectInputStreamReadString;
+
  
 public class SQLManager {
 	
